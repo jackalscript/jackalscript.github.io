@@ -185,6 +185,11 @@ ol.kanto {
     cursor: pointer;
 }
 
+div.sprite {
+    width: 64px;
+    height: 64px;
+}
+
 li:before {
     content: "00" counter(items)". ";
 }
