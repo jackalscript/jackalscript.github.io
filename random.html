@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Random Pokémon</title>
+  <script src="./main.js" defer></script>
+</head>
+<body style="height: 95vh; width: 95vw;">
+  <h1>Get a random Pokémon</h1>
+  
+  <form id="randomize-form"> 
+    <label for="kanto">
+      <input type="radio" id="kanto" name="region" value="kanto">
+      Kanto
+    </label>
+
+    <label for="johto">
+      <input type="radio" id="johto" name="region" value="johto">
+      Johto
+    </label>
+
+    <label for="hoenn">
+      <input type="radio" id="hoenn" name="region" value="hoenn">
+      Hoenn
+    </label>
+
+    <label for="sinnoh">
+      <input type="radio" id="sinnoh" name="region" value="sinnoh">
+      Sinnoh
+    </label>
+
+    <label for="unova">
+      <input type="radio" id="unova" name="region" value="unova">
+      Unova
+    </label>
+
+    <label for="kalos">
+      <input type="radio" id="kalos" name="region" value="kalos">
+      Kalos
+    </label>
+
+    <label for="alola">
+      <input type="radio" id="alola" name="region" value="alola">
+      Alola
+    </label>
+
+    <label for="galar">
+      <input type="radio" id="galar" name="region" value="galar">
+      Galar
+    </label>
+
+    <label for="paldea">
+      <input type="radio" id="paldea" name="region" value="paldea">
+      Paldea
+    </label>
+
+    <button type="reset">Reset</button>
+
+    <button type="submit" id="randomize">Get random Pokémon</button>
+  </form>
+  
+  <div>
+    <form id="search-form">
+      <input type="search" id="search-field" name="search" placeholder="Choose a Pokémon" requiered>
+      <button type="submit" id="search-button">Search</button>
+      <p id="search-info"></p>
+    </form>  
+
+    <br>
+
+    <img src="" alt="">
+    <h2 style="display:inline-block;"></h2>
+  </div>
+</body>
+</html>
