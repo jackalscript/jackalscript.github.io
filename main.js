@@ -4,15 +4,62 @@ const pokemonSearch = document.querySelector('#search-field');
 const searchButton = document.querySelector('#search-button');
 const searchInfo = document.querySelector('#search-info');
 
+const regions = {
+	kanto: {
+		name: 'Kanto',
+		firstMon: 1,
+		lastMon: 151
+	},
+	johto: {
+		name: 'Johto',
+		firstMon: 152,
+		lastMon: 251
+	},
+	hoenn: {
+		name: 'Hoenn',
+		firstMon: 252,
+		lastMon: 386
+	},
+	sinnoh: {
+		name: 'Sinnoh',
+		firstMon: 387,
+		lastMon: 493
+	},
+	unova: {
+		name: 'Unova',
+		firstMon: 494,
+		lastMon: 649
+	},
+	kalos: {
+		name: 'Kalos',
+		firstMon: 650,
+		lastMon: 721
+	},
+	alola: {
+		name: 'Alola',
+		firstMon: 722,
+		lastMon: 809
+	},
+	galar: {
+		name: 'Galar',
+		firstMon: 810,
+		lastMon: 898
+	},
+	paldea: {
+		name: 'Paldea',
+		firstMon: 899,
+		lastMon: 1010
+	}
+}
+
 randomizeButton.addEventListener('click', (e) => {
   e.preventDefault();
-  regionSelector();
+  getCheckedRegions();
 });
 
 searchButton.addEventListener('click', (e) => {
 	e.preventDefault();
-	console.log(pokemonSearch.value);
-	searchPokemon(pokemonSearch.value);
+	getPokemon(pokemonSearch.value);
 });
 
 function randomNumber(min, max) {
@@ -25,32 +72,24 @@ function capitalizeFirstLetter(string) {
 
 async function getPokemon(min, max = undefined) {
 	let chosenPokemon;
+	let pokemonID = parseInt(min);
+	searchInfo.innerText = '';
 
-	if (typeof min === "number" && typeof max === "number") {
+	if (min === '' || null) {
+		searchInfo.innerText = 'Please enter a Pokemon name or ID number.';
+		return;
+	}	else if (typeof min === "number" && typeof max === "number") {
 		chosenPokemon = randomNumber(min, max);
-		console.log(chosenPokemon);
-	} else if (typeof min === "number" && typeof max === undefined && min < 1010) {
-		chosenPokemon = min;
-		console.log(chosenPokemon);
-	} else if (typeof min === "number" && min > 1010) {
-		chosenPokemon = randomNumber(1, 1010);
-		console.log(chosenPokemon);
-		searchInfo.innerText = `There are only 1010 Pokemon. Here's a random one.`;
-	} else if (typeof min === "string" && typeof max === undefined) {
-		chosenPokemon = min.toLowerCase();
-		console.log(chosenPokemon);
-	} else {
-		chosenPokemon = "abra";
+	} else if (pokemonID <= 0 || pokemonID > 1010) {
+		searchInfo.innerText = 'There are no Pokemon with that ID number.';
+		return;
+	} else if (typeof min === "string") {
+		chosenPokemon = min.trim().toLowerCase();
 	}
-
-	console.log(typeof min, min);
-	console.log(typeof max, max);
 
   const response = await fetch(`${POKE_API}pokemon/${chosenPokemon}/`);
   const pokemon = await response.json();
 
-	// console.log(chosenPokemon);
-  // console.log(pokemon);
 
 	const pokemonName = document.querySelector('h2');
 	const pokemonArtwork = document.querySelector('img');
@@ -58,11 +97,23 @@ async function getPokemon(min, max = undefined) {
   pokemonArtwork.src = pokemon.sprites.other['official-artwork'].front_default;
 }
 
-function regionSelector() {
+function getCheckedRegions() {
+	const checkedRegions = [];
+	const regionCheckboxes = document.querySelectorAll('input[name="region"]:checked');
+	regionCheckboxes.forEach((region) => {
+		checkedRegions.push(region.value);
+	});
+	
+	randomizeByRegion(checkedRegions);
+}
+
+function randomizeByRegion(regionArray) {
+	console.log(regionArray);
   if (document.querySelector('input[name="region"]:checked') === null) {
 		getPokemon(1, 1010);
 	} else {
-		const selectedRegion = document.querySelector('input[name="region"]:checked').value;
+		const regionRandomizer = randomNumber(0, regionArray.length - 1);
+		const selectedRegion = regionArray[regionRandomizer];
 		console.log(selectedRegion);
   	if (selectedRegion === 'kanto') {
     	getPokemon(1, 151);
@@ -88,14 +139,4 @@ function regionSelector() {
 	}
 }
 
-function searchPokemon(input) {
-	if (input === '' || null) {
-		searchInfo.innerText = 'Please enter a Pokemon name or ID number.';
-	} else if (typeof input === 'number' || typeof input === 'string') {
-		getPokemon(input);
-	} else {
-		searchInfo.innerText = 'Please enter a Pokemon name or ID number.';
-	}
-}
-
-regionSelector();
+randomizeByRegion();
