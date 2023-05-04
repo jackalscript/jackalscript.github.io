@@ -181,8 +181,12 @@ ol.kanto {
 }
 
 .entry:hover {
-    border-style: inset;
+    /* border-style: inset; */
     cursor: pointer;
+}
+
+.entry:active {
+    border-style: inset;
 }
 
 div.sprite {
