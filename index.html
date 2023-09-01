@@ -2,39 +2,79 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<link rel="stylesheet" href="./css/style.css">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+	<link rel="stylesheet" href="./css/newstyle.css">
 	<script type="module" src="./src/main.js" defer></script>
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap" rel="stylesheet">
   <link href="./favicon.ico" rel="icon" type="image/x-icon" />
 	<title>Pokédex</title>
 </head>
 <body>
-	<h1>Kanto Pokédex</h1>
-	<ol class="kanto">
-		<!-- <li class="entry grass poison">
-			<div class="sprite">
-				<img src="./images/001.png">
-			</div>
-			<span class="name">Bulbasaur</span>
-			<span class="type grass">Grass</span>
-			<span class="type poison">Poison</span>
-		</li>
-		
-		<li class="entry fire">
-			<div class="sprite">
-				<img src="./images/004.png">
-			</div>
-			<span class="name">Charmander</span>
-			<span class="type fire">Fire</span>
-		</li>
-		
-		<li class="entry water">
-			<div class="sprite">
-				<img src="./images/007.png">
-			</div>
-			<span class="name">Squirtle</span>
-			<span class="type water">Water</span>
-		</li> -->
-	</ol>
+	<nav>
+		<h1>KANTO DEX</h1>
+		<div class="burger">
+			<div class="meat"></div>
+			<div class="meat"></div>
+			<div class="meat"></div>
+		</div>
+	</nav>
+
+	<main>
+		<ul class="dexList">
+			<!-- <li class="entry entry--grass-poison">
+				<div class="sprite">
+					<img src="./images/001.png" loading="lazy">
+				</div>
+				<div class="entry__info">
+					<span class="field name">Bulbasaur</span>
+					<span class="field number">0001</span>
+					<span class="field region">Kanto</span>
+					<span class="field type entry--grass">Grass</span>
+					<span class="field type entry--poison">Poison</span>
+				</div>
+			</li> -->
+		</ul>
+	</main>
+
+	<aside>
+		<button class="region-button selected" data-region="kanto">
+			<h2>Kanto</h2>
+		</button>
+		<button class="region-button" data-region="johto">
+			<h2>Johto</h2>
+		</button>
+		<button class="region-button" data-region="hoenn">
+			<h2>Hoenn</h2>
+		</button>
+		<button class="region-button" data-region="sinnoh">
+			<h2>Sinnoh</h2>
+		</button>
+		<button class="region-button" data-region="unova">
+			<h2>Unova</h2>
+		</button>
+		<button class="region-button" data-region="kalos">
+			<h2>Kalos</h2>
+		</button>
+		<button class="region-button" data-region="alola">
+			<h2>Alola</h2>
+		</button>
+		<button class="region-button" data-region="galar">
+			<h2>Galar</h2>
+		</button>
+		<button class="region-button" data-region="paldea">
+			<h2>Paldea</h2>
+		</button>
+	</aside>
+
+	<footer>
+		<div class="search-container">
+			<input class="search-bar" placeholder="Search for a Pokémon" type="text">
+			<button class="button search-button">Search</button>	
+		</div>
+		<button class=" button search-button">Name</button>	
+	</footer>
+
 </body>
 </html>

@@ -20,5 +20,8 @@
   "bugs": {
     "url": "https://github.com/jackalscript/jackalscript.github.io/issues"
   },
-  "homepage": "https://github.com/jackalscript/jackalscript.github.io#readme"
+  "homepage": "https://github.com/jackalscript/jackalscript.github.io#readme",
+  "dependencies": {
+    "lazysizes": "^5.3.2"
+  }
 }

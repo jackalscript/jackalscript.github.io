@@ -227,22 +227,22 @@ const pokemonTyping = {
 };
 
 const regionLimits = {
-  "kanto": { min: 1, max: 151, offset: 0, limit: 151 },
-  "johto": { min: 152, max: 251, offset: 151, limit: 100 },
-  "hoenn": { min: 252, max: 386, offset: 251, limit: 135 },
-  "sinnoh": { min: 387, max: 493, offset: 386, limit: 107 },
-  "unova": { min: 494, max: 649, offset: 493, limit: 156 },
-  "kalos": { min: 650, max: 721, offset: 649, limit: 72  },
-  "alola": { min: 722, max: 809, offset: 721, limit: 88  },
-  "galar": { min: 810, max: 898, offset: 809, limit: 89  },
-  "paldea": { min: 899, max: 1010, offset: 898, limit: 112 }
+  kanto: { gen: "generation-i", min: 1, max: 151, offset: 0, limit: 151 },
+  johto: { gen: "generation-ii", min: 152, max: 251, offset: 151, limit: 100 },
+  hoenn: { gen: "generation-iii", min: 252, max: 386, offset: 251, limit: 135 },
+  sinnoh: { gen: "generation-iv", min: 387, max: 493, offset: 386, limit: 107 },
+  unova: { gen: "generation-v", min: 494, max: 649, offset: 493, limit: 156 },
+  kalos: { gen: "generation-vi", min: 650, max: 721, offset: 649, limit: 72  },
+  alola: { gen: "generation-vii", min: 722, max: 809, offset: 721, limit: 88  },
+  galar: { gen: "generation-viii", min: 810, max: 898, offset: 809, limit: 96  },
+  paldea: { gen: "generation-ix", min: 906, max: 1010, offset: 905, limit: 105 }
 };
 
 async function fetchAPI(param) {
   const POKE_API = "https://pokeapi.co/api/v2/";
-    const response = await fetch(`${POKE_API}${param}`);
-    const pokemon = await response.json();
-    return pokemon;
+  const response = await fetch(`${POKE_API}${param}`);
+  const pokemon = await response.json();
+  return pokemon;
 };
 
 export { pokemonNames, pokemonTyping, regionLimits, fetchAPI };
